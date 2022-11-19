@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
@@ -36,7 +37,7 @@ public class DatParser extends Parser {
 		log.trace("Reading achievements XML from: " + xmlFile.getPath());
 		
 		// Need to clean invalid XML and comments - write to temp file before JAXB parsing
-		File tempFile = File.createTempFile("ftledit", ".tmp");
+		File tempFile = Files.createTempFile( "ftledit", ".tmp" ).toFile();
 		tempFile.deleteOnExit();
 		
 		BufferedReader in = new BufferedReader( new FileReader(xmlFile) );
@@ -71,7 +72,7 @@ public class DatParser extends Parser {
 		log.trace("Reading blueprints XML from: " + xmlFile.getPath());
 		
 		// Need to clean invalid XML and comments - write to temp file before JAXB parsing
-		File tempFile = File.createTempFile("ftledit", ".tmp");
+		File tempFile = Files.createTempFile( "ftledit", ".tmp" ).toFile();
 		tempFile.deleteOnExit();
 		
 		BufferedReader in = new BufferedReader( new InputStreamReader( new FileInputStream(xmlFile) ) );
